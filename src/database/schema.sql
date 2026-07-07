@@ -204,14 +204,23 @@ ALTER TABLE standings ENABLE ROW LEVEL SECURITY;
 ALTER TABLE season_stats ENABLE ROW LEVEL SECURITY;
 
 -- Allow public read access for all tables
+DROP POLICY IF EXISTS "Allow public read teams" ON teams;
 CREATE POLICY "Allow public read teams" ON teams FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Allow public read players" ON players;
 CREATE POLICY "Allow public read players" ON players FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Allow public read matches" ON matches;
 CREATE POLICY "Allow public read matches" ON matches FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Allow public read match_events" ON match_events;
 CREATE POLICY "Allow public read match_events" ON match_events FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Allow public read standings" ON standings;
 CREATE POLICY "Allow public read standings" ON standings FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Allow public read season_stats" ON season_stats;
 CREATE POLICY "Allow public read season_stats" ON season_stats FOR SELECT USING (true);
 
 -- Allow public insert for matches and events
+DROP POLICY IF EXISTS "Allow public insert matches" ON matches;
 CREATE POLICY "Allow public insert matches" ON matches FOR INSERT WITH CHECK (true);
+DROP POLICY IF EXISTS "Allow public insert match_events" ON match_events;
 CREATE POLICY "Allow public insert match_events" ON match_events FOR INSERT WITH CHECK (true);
+DROP POLICY IF EXISTS "Allow public update matches" ON matches;
 CREATE POLICY "Allow public update matches" ON matches FOR UPDATE USING (true);
