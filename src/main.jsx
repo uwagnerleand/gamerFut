@@ -6,7 +6,7 @@ import './styles/global.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/porto-fc-manager-simulator">
+    <BrowserRouter basename="/gamerFut">
       <App />
     </BrowserRouter>
   </React.StrictMode>
