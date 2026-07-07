@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ⚽ Porto FC Manager Simulator
 
 **Um simulador de partidas de futsal do Porto FC** - Acompanhe partidas emocionantes em tempo real com narração, estatísticas e muito mais!
@@ -262,3 +263,6 @@ Este projeto está sob a licença MIT.
 ---
 
 **#ForçaPorto** ⚽💙
+=======
+# gamerFut
+>>>>>>> bf281eb760a131413c70c8a4b288b534ad32bafd
