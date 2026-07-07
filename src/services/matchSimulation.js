@@ -114,9 +114,9 @@ class MatchState {
 // PLAYER SELECTION
 // ============================================
 
-function selectPlayerByPosition(players, position) {
-  const candidates = players.filter(p => p.position === position && !this?.redCardedPlayers?.has(p.id));
-  return candidates.length > 0 ? randomPick(candidates) : randomPick(players.filter(p => !this?.redCardedPlayers?.has(p.id)));
+function selectPlayerByPosition(players, position, redCardedPlayers = new Set()) {
+  const candidates = players.filter(p => p.position === position && !redCardedPlayers.has(p.id));
+  return candidates.length > 0 ? randomPick(candidates) : randomPick(players.filter(p => !redCardedPlayers.has(p.id)));
 }
 
 function selectAttackingPlayer(players, excludePositions = []) {

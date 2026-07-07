@@ -87,8 +87,9 @@ function Home() {
           <SquadCard name="Cadu" position="Ala" number={5} />
           <SquadCard name="Vyni" position="Ala" number={6} />
           <SquadCard name="Tayson" position="Ala" number={7} />
-          <SquadCard name="Luan" position="Pivô" number={8} />
+          <SquadCard name="Luan" position="Ala" number={8} />
           <SquadCard name="Erick" position="Pivô" number={9} />
+          <SquadCard name="Gabriel" position="Pivô" number={10} />
         </div>
       </div>
     </div>
