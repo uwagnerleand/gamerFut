@@ -85,6 +85,10 @@
   font-size: 0.85rem;
   font-weight: 500;
   transition: all var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  user-select: none;
 }
 
 .nav-btn:hover {
@@ -227,6 +231,7 @@
   height: 200%;
   background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
   animation: shimmer 8s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .home-logo {
@@ -648,6 +653,14 @@
   font-weight: 600;
   transition: all var(--transition-fast);
   border: 1px solid transparent;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  user-select: none;
+}
+
+.speed-btn:active {
+  transform: scale(0.95);
 }
 
 .speed-btn:hover {

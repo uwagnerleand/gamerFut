@@ -41,6 +41,8 @@ function Standings() {
       };
     });
 
+    const scorersMap = {};
+
     // Simulate matches between all teams (round robin)
     for (let i = 0; i < teams.length; i++) {
       for (let j = i + 1; j < teams.length; j++) {
@@ -82,26 +84,22 @@ function Standings() {
           teamStats[teams[j].id].losses++;
         }
 
-        // Track scorers
+        // Track scorers locally
         if (result.homeGoalScorers.length > 0) {
           result.homeGoalScorers.forEach(name => {
-            const existing = topScorers.find(s => s.name === name);
-            if (existing) {
-              existing.goals++;
-            } else {
-              topScorers.push({ name, team: teams[i].name, goals: 1, assists: 0 });
+            if (!scorersMap[name]) {
+              scorersMap[name] = { name, team: teams[i].name, goals: 0, assists: 0 };
             }
+            scorersMap[name].goals++;
           });
         }
 
         if (result.homeAssists.length > 0) {
           result.homeAssists.forEach(name => {
-            const existing = topScorers.find(s => s.name === name);
-            if (existing) {
-              existing.assists = (existing.assists || 0) + 1;
-            } else {
-              topScorers.push({ name, team: teams[i].name, goals: 0, assists: 1 });
+            if (!scorersMap[name]) {
+              scorersMap[name] = { name, team: teams[i].name, goals: 0, assists: 0 };
             }
+            scorersMap[name].assists++;
           });
         }
       }
@@ -119,11 +117,12 @@ function Standings() {
 
     setStandings(standingsArray);
 
+    const localScorers = Object.values(scorersMap);
     // Sort scorers
-    const sortedScorers = [...topScorers].sort((a, b) => b.goals - a.goals).slice(0, 10);
+    const sortedScorers = [...localScorers].sort((a, b) => b.goals - a.goals).slice(0, 10);
     setTopScorers(sortedScorers);
 
-    const sortedAssists = [...topScorers].sort((a, b) => (b.assists || 0) - (a.assists || 0)).slice(0, 10);
+    const sortedAssists = [...localScorers].sort((a, b) => (b.assists || 0) - (a.assists || 0)).slice(0, 10);
     setTopAssists(sortedAssists);
 
     setLoading(false);
